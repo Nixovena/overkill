@@ -76,6 +76,7 @@
       <div class="sidebar-heading">Reference</div>
       <a href="#file-locations" class="sidebar-link">File Locations</a>
       <a href="#troubleshooting" class="sidebar-link">Troubleshooting</a>
+      <a href="#contact" class="sidebar-link">Contact</a>
     </div>
   </aside>
 
@@ -541,6 +542,13 @@ Conky Reanchor: Enabled
       </tbody>
     </table>
 
+    <h2 id="contact">Contact</h2>
+    <p>For bug reports, feature suggestions, or any other inquiries, please visit Nixovena Labs website:</p>
+    <div class="callout info">
+      <strong>Website:</strong> <a href="https://nixovena.org" target="_blank">nixovena.org</a>
+    </div>
+    <p>You can find our community forums, social media links, and direct contact methods there.</p>
+
     <h2 id="troubleshooting">Troubleshooting</h2>
 
     <h3>Edition install fails</h3>
@@ -553,19 +561,25 @@ Conky Reanchor: Enabled
     <p>Verify that the NetworkManager drop-in exists: <code>cat /etc/NetworkManager/conf.d/90-dns-manual.conf</code>. It should contain <code>[main]</code> and <code>dns=none</code>. If missing, re-apply DNS through System Manager.</p>
 
     <h3>NVIDIA driver not loading</h3>
-    <p>Reboot after installation. Check if the module loaded: <code>lsmod | grep nvidia</code>. If not, run <code>sudo dpkg-reconfigure nvidia-driver</code> and reboot again. Ensure Secure Boot is disabled.</p>
+    <p>Reboot after installation. If the driver still does not load, ensure Secure Boot is disabled in your UEFI settings and try reinstalling through System Manager (Drivers module).</p>
 
     <h3>Conky shows "None" for edition</h3>
     <p>This is normal if no edition has been installed yet. Install an edition through System Manager and the Conky display will update automatically.</p>
 
     <h3>Flatpak apps not appearing in menu</h3>
-    <p>Log out and back in, or run: <code>flatpak --user update</code>. Some desktop environments cache the application menu and require a session restart.</p>
+    <p>Log out and back in. KDE caches the application menu and requires a session restart to detect newly installed Flatpak applications.</p>
 
     <h3>ZRAM not activating</h3>
-    <p>Ensure <code>zram-tools</code> is installed: <code>sudo overkill-setup-cli zram install</code>. Then enable: <code>sudo overkill-setup-cli zram enable</code>. Check status with <code>sudo overkill-setup-cli zram status</code>.</p>
+    <p>Open System Manager, go to the ZRAM module, and click <strong>INSTALL</strong> first, then <strong>ENABLE</strong>. Click <strong>STATUS</strong> to verify it is active.</p>
 
   </main>
 </div>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 Overkill Linux Project &mdash; Developed by <a href="https://nixovena.org" target="_blank">Nixovena Labs</a> &mdash; Built on <a href="https://www.debian.org" target="_blank">Debian</a></p>
+  </div>
+</footer>
 
 <!-- Mobile sidebar toggle -->
 <div class="docs-menu-toggle" id="docsMenuToggle">&equiv;</div>
