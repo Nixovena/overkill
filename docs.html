@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Docs — Overkill Linux</title>
+  <meta name="description" content="Complete documentation for Overkill Linux. Installation guide, CLI reference, edition details, security hardening, and system configuration.">
+  <link rel="icon" href="Assets/logo.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar scrolled" id="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand">
+      <img src="Assets/logo.png" alt="Overkill">
+      <span>OVERKILL</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#editions">Editions</a></li>
+      <li><a href="index.html#manager">System Manager</a></li>
+      <li><a href="docs.html" style="color:var(--cyan)">Docs</a></li>
+      <li><a href="index.html#download">Download</a></li>
+    </ul>
+    <div class="nav-toggle" id="navToggle">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ DOCS LAYOUT ═══ -->
+<div class="docs-layout">
+
+  <!-- Sidebar -->
+  <aside class="docs-sidebar" id="docsSidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Getting Started</div>
+      <a href="#overview" class="sidebar-link active">Overview</a>
+      <a href="#project-history" class="sidebar-link">Project History</a>
+      <a href="#requirements" class="sidebar-link">System Requirements</a>
+      <a href="#installation" class="sidebar-link">Installation</a>
+      <a href="#first-boot" class="sidebar-link">First Boot</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Editions</div>
+      <a href="#editions-overview" class="sidebar-link">Edition System</a>
+      <a href="#edition-list" class="sidebar-link">Full Edition List</a>
+      <a href="#tuning-profiles" class="sidebar-link">Tuning Profiles</a>
+      <a href="#switching-editions" class="sidebar-link">Switching Editions</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-heading">System Manager</div>
+      <a href="#manager-gui" class="sidebar-link">GUI (Recommended)</a>
+      <a href="#manager-modules" class="sidebar-link">Modules</a>
+      <a href="#cli-reference" class="sidebar-link">CLI (Alternative)</a>
+      <a href="#cli-examples" class="sidebar-link">CLI Examples</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Configuration</div>
+      <a href="#dns" class="sidebar-link">DNS Configuration</a>
+      <a href="#zram" class="sidebar-link">ZRAM Setup</a>
+      <a href="#nvidia" class="sidebar-link">NVIDIA Drivers</a>
+      <a href="#browsers" class="sidebar-link">Browser Management</a>
+      <a href="#conky-manager" class="sidebar-link">Conky Manager</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Security</div>
+      <a href="#hardening" class="sidebar-link">Hardening Overview</a>
+      <a href="#nftables" class="sidebar-link">nftables Firewall</a>
+      <a href="#sysctl" class="sidebar-link">Sysctl Tuning</a>
+      <a href="#module-blacklist" class="sidebar-link">Module Blacklisting</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Reference</div>
+      <a href="#file-locations" class="sidebar-link">File Locations</a>
+      <a href="#troubleshooting" class="sidebar-link">Troubleshooting</a>
+    </div>
+  </aside>
+
+  <!-- Content -->
+  <main class="docs-content">
+    <h1>Overkill Linux Documentation</h1>
+    <p class="lead">Complete reference for installing, configuring, and mastering Overkill Linux v2.0 Katana.</p>
+
+    <!-- ─── GETTING STARTED ─── -->
+    <h2 id="overview">Overview</h2>
+    <p>Overkill Linux is a Debian-based Linux distribution that uses the KDE Plasma desktop environment. It offers customized editions tailored to every user type and need -- developers, gamers, multimedia creators, scientists, crypto users, engineers, and students.</p>
+    <p>Through the <strong>Overkill System Manager</strong>, all required packages for each edition are downloaded and kernel settings are applied with a single click. The System Manager also provides ZRAM support, NVIDIA driver installation, package management, DNS configuration, browser installation, and general system administration tools.</p>
+    <p>The goal of Overkill is to provide an effortless and fast workstation setup for every user. One ISO, install your preferred edition after boot, and your system is ready.</p>
+    <div class="callout info">
+      <strong>Key Facts:</strong> Based on Debian Stable. KDE Plasma desktop. systemd init. amd64 architecture. Flatpak integrated. 20 editions. ZRAM support. NVIDIA driver management. Conky desktop monitor.
+    </div>
+
+    <h2 id="project-history">Project History</h2>
+    <p>Overkill Linux was formerly known as <strong>Linux Megamix</strong>. The project was evolved and renamed due to several factors:</p>
+    <ul>
+      <li><strong>Installer issues</strong> -- The original debian-installer and squashfs copy mechanism caused reliability problems during installation</li>
+      <li><strong>Low usability</strong> -- The old system lacked a graphical management tool, requiring manual configuration</li>
+      <li><strong>Maintenance overhead</strong> -- Maintaining separate ISO images for each edition was unsustainable; the new single-ISO approach with post-install edition selection greatly reduces maintenance burden</li>
+      <li><strong>Limited flexibility</strong> -- The old system did not support combining editions; the new Mix system allows combining Developer + Gaming, Developer + AI, and other combinations</li>
+    </ul>
+    <h3>What changed in 2.0 "Katana"</h3>
+    <ul>
+      <li>Single ISO architecture -- editions are installed after boot, not baked into separate images</li>
+      <li>Overkill System Manager (PyQt6 GUI) for graphical system management</li>
+      <li>Kernel tuning profiles updated and expanded (gaming, multimedia, AI, hardened)</li>
+      <li>New editions: Lite variants (Gaming Lite, Dev Lite, Dev+Gaming Lite), Gamebox, and Mix combinations</li>
+      <li>New KDE Plasma desktop configuration</li>
+      <li>Conky desktop monitor showing system info, edition, performance, storage, network, and battery</li>
+      <li>Conky Manager tool for enabling/disabling the desktop monitor from terminal</li>
+    </ul>
+
+    <h2 id="requirements">System Requirements</h2>
+    <table class="docs-table">
+      <thead>
+        <tr><th>Component</th><th>Minimum</th><th>Recommended</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>CPU</td><td>64-bit x86 processor</td><td>4+ cores, 2.0 GHz+</td></tr>
+        <tr><td>RAM</td><td>2 GB</td><td>4 GB+ (8 GB+ for AI/Dev editions)</td></tr>
+        <tr><td>Storage</td><td>20 GB</td><td>50 GB+ SSD</td></tr>
+        <tr><td>GPU</td><td>Any (Intel/AMD/NVIDIA)</td><td>Dedicated GPU for Gaming/AI editions</td></tr>
+        <tr><td>Network</td><td>Required for edition install</td><td>Broadband connection</td></tr>
+        <tr><td>Boot</td><td>UEFI or Legacy BIOS</td><td>UEFI with Secure Boot disabled</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="installation">Installation</h2>
+    <h3>1. Download the ISO</h3>
+    <p>Download <code>overkill-2.0-amd64.iso</code> from <a href="https://sourceforge.net/projects/overkill/files/release/overkill-2.0-amd64.iso/download">SourceForge</a>. After downloading, verify the file integrity:</p>
+    <pre><code>sha256sum overkill-2.0-amd64.iso</code></pre>
+    <p>Expected checksum:</p>
+    <pre><code>349c1ee8d1fda9c94dc098420e75a0f587e5e5adb3876c2e9ce8a8162fc245dd</code></pre>
+
+    <h3>2. Create a Bootable USB</h3>
+    <p>Flash the ISO to a USB drive (8 GB minimum). The USB contents will be erased.</p>
+    <p><strong>Linux:</strong></p>
+    <pre><code>sudo dd if=overkill-2.0-amd64.iso of=/dev/sdX bs=4M status=progress oflag=sync</code></pre>
+    <p>Replace <code>/dev/sdX</code> with your USB device (use <code>lsblk</code> to identify it). Do not point to a partition (e.g., <code>/dev/sda1</code>), use the whole disk (e.g., <code>/dev/sda</code>).</p>
+    <p><strong>Windows:</strong> Use <a href="https://rufus.ie" target="_blank">Rufus</a> or <a href="https://etcher.balena.io" target="_blank">balenaEtcher</a>.</p>
+    <p><strong>macOS:</strong> Use balenaEtcher, or <code>dd</code> in Terminal.</p>
+
+    <h3>3. Boot from USB</h3>
+    <p>Reboot your machine and enter the BIOS/UEFI boot menu (typically F12, F2, Del, or Esc during POST). Select your USB device. The Debian installer will launch.</p>
+    <div class="callout warn">
+      <strong>Secure Boot:</strong> If your system has Secure Boot enabled and the installer fails to start, disable it in your UEFI firmware settings.
+    </div>
+
+    <h3>4. Complete the Installer</h3>
+    <p>The Debian installer will guide you through disk partitioning, user account creation, timezone, and locale setup. The KDE Plasma desktop and core system packages are pre-installed on the ISO -- no additional desktop selection is needed.</p>
+
+    <h2 id="first-boot">First Boot</h2>
+    <p>After installation, log in to KDE Plasma. The system ships with the base desktop and Overkill System Manager pre-installed. No edition is active by default.</p>
+    <p>To set up your workstation:</p>
+    <ol>
+      <li>Open the <strong>Applications Menu</strong> and launch <strong>Overkill System Manager</strong>.</li>
+      <li>Browse the 20 available editions in the Editions tab and select the one that matches your workflow.</li>
+      <li>Click the <strong>Install</strong> button. The system will download and configure all packages automatically.</li>
+      <li>Reboot to apply kernel tuning profiles (if applicable to your edition).</li>
+    </ol>
+    <div class="callout info">
+      <strong>Recommended:</strong> Always use the graphical <strong>Overkill System Manager</strong> from the Applications Menu for all system operations. The GUI provides real-time console output, error handling, and a user-friendly interface. The CLI (<code>overkill-setup-cli</code>) exists as an alternative for advanced users and scripting purposes, but is not the recommended way to interact with the system.
+    </div>
+    <div class="callout info">
+      <strong>Tip:</strong> The Conky system monitor on your desktop will display the currently installed edition name, system performance metrics, storage, network, and battery information.
+    </div>
+
+    <!-- ─── EDITIONS ─── -->
+    <h2 id="editions-overview">Edition System</h2>
+    <p>The edition system is the core feature of Overkill Linux. Each edition defines:</p>
+    <ul>
+      <li><strong>APT Packages</strong> -- System-level software from Debian stable repositories (compilers, libraries, CLI tools, drivers)</li>
+      <li><strong>Flatpak Applications</strong> -- Sandboxed desktop apps from Flathub (IDEs, games, wallets, browsers, AI clients)</li>
+      <li><strong>Tuning Profile</strong> -- Optional kernel-level configuration (sysctl parameters, GRUB settings, module blacklisting, firewall rules)</li>
+    </ul>
+    <p>Only one edition can be installed at a time. The system enforces this by checking for an existing edition before allowing a new installation. The edition state is stored in <code>/usr/share/edition/edition.conf</code>.</p>
+
+    <h2 id="edition-list">Full Edition List</h2>
+    <table class="docs-table">
+      <thead>
+        <tr><th>ID</th><th>Edition</th><th>Description</th><th>Tuning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Development</td><td>Docker, IDEs, compilers, languages, and dev tooling</td><td>--</td></tr>
+        <tr><td>2</td><td>AI</td><td>AI desktop apps + PyTorch/XGBoost/Pandas + AI tuning</td><td>AI</td></tr>
+        <tr><td>3</td><td>Education</td><td>Office, math, science, and learning suites</td><td>--</td></tr>
+        <tr><td>4</td><td>Engineer</td><td>CAD, CAM, EDA, simulation, and 3D tools</td><td>--</td></tr>
+        <tr><td>5</td><td>Gaming</td><td>Wine, Steam stack, drivers + gaming kernel tuning</td><td>Gaming</td></tr>
+        <tr><td>6</td><td>Hardened</td><td>KeePassXC, Kleopatra, Cryptomator + nftables firewall</td><td>Hardened + FW</td></tr>
+        <tr><td>7</td><td>Cryptocurrency</td><td>Wallets, Cryptomator, Picocrypt and crypto apps</td><td>--</td></tr>
+        <tr><td>8</td><td>Cryptocurrency Hardened</td><td>Crypto apps + full hardening (no firewall)</td><td>Hardened</td></tr>
+        <tr><td>9</td><td>Scientific</td><td>TeX, Octave, R, Python stack, simulation and plotting</td><td>--</td></tr>
+        <tr><td>10</td><td>Office</td><td>Office suite, mail, finance, and PDF tools</td><td>--</td></tr>
+        <tr><td>11</td><td>Multimedia</td><td>DAW, NLE, GFX, photo + multimedia tuning</td><td>Multimedia</td></tr>
+        <tr><td>12</td><td>Dev + Gaming Mix</td><td>Dev stack + gaming stack with gaming tuning</td><td>Gaming</td></tr>
+        <tr><td>13</td><td>Dev + Gaming + Multimedia Mix</td><td>Everything for power users</td><td>Gaming</td></tr>
+        <tr><td>14</td><td>Dev + AI Mix</td><td>Dev stack + AI apps + ML libs + AI tuning</td><td>AI</td></tr>
+        <tr><td>15</td><td>Dev + Cryptocurrency Mix</td><td>Dev stack + crypto wallets/apps</td><td>--</td></tr>
+        <tr><td>16</td><td>Dev + Crypto Hardened Mix</td><td>Dev + crypto + full hardening</td><td>Hardened</td></tr>
+        <tr><td>17</td><td>Gaming Lite</td><td>Steam, Heroic, Lutris, Discord + gaming tuning</td><td>Gaming</td></tr>
+        <tr><td>18</td><td>Development Lite</td><td>VS Code + GitHub Desktop</td><td>--</td></tr>
+        <tr><td>19</td><td>Dev + Gaming Lite Mix</td><td>Dev Lite + Gaming Lite combined</td><td>Gaming</td></tr>
+        <tr><td>20</td><td>Gamebox</td><td>Mindustry, OpenTTD, 0 A.D. and more + gaming tuning</td><td>Gaming</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="tuning-profiles">Tuning Profiles</h2>
+    <p>Tuning profiles modify kernel parameters, boot configuration, and system services to optimize performance for specific workloads.</p>
+
+    <h3>Gaming Tuning</h3>
+    <ul>
+      <li>Reduced <code>vm.swappiness</code> to keep games in RAM</li>
+      <li>Increased <code>vm.max_map_count</code> for large game maps</li>
+      <li>Optimized I/O scheduler and writeback settings</li>
+      <li>Network latency optimization (TCP nodelay, reduced keepalive)</li>
+      <li>Hugepages configuration for memory-intensive games</li>
+      <li>GRUB parameters for performance-oriented boot</li>
+    </ul>
+
+    <h3>Multimedia Tuning</h3>
+    <ul>
+      <li>Low-latency audio configuration (reduced buffer sizes)</li>
+      <li>Balanced I/O writeback for sustained read/write</li>
+      <li>Optimized memory management for large media files</li>
+      <li>PipeWire/JACK-friendly kernel parameters</li>
+    </ul>
+
+    <h3>AI Tuning</h3>
+    <ul>
+      <li>Maximized <code>vm.max_map_count</code> for large dataset mapping</li>
+      <li>GPU memory allocation optimization</li>
+      <li>Increased file descriptor and inotify limits</li>
+      <li>Large I/O buffer configuration for model loading</li>
+    </ul>
+
+    <h3>Hardened Tuning</h3>
+    <ul>
+      <li>Sysctl kernel lockdown parameters (see <a href="#sysctl">Sysctl Tuning</a>)</li>
+      <li>GRUB boot security parameters (see <a href="#hardening">Hardening Overview</a>)</li>
+      <li>Vulnerable kernel module blacklisting (see <a href="#module-blacklist">Module Blacklisting</a>)</li>
+      <li>nftables firewall (Hardened Edition only, see <a href="#nftables">nftables Firewall</a>)</li>
+    </ul>
+
+    <h2 id="switching-editions">Switching Editions</h2>
+    <p>To switch from one edition to another:</p>
+    <ol>
+      <li>Open System Manager and click <strong>Uninstall Current Edition</strong>, or run <code>sudo overkill-setup-cli uninstall-edition</code></li>
+      <li>The system will purge all edition-specific APT packages and Flatpak apps, and revert any kernel tuning changes</li>
+      <li>Install the new edition</li>
+      <li>Reboot to apply the new tuning profile</li>
+    </ol>
+    <div class="callout warn">
+      <strong>Note:</strong> Uninstalling an edition will remove all packages installed by that edition. Any personal data, home directory files, and system-level packages not part of the edition are unaffected.
+    </div>
+
+    <!-- ─── SYSTEM MANAGER ─── -->
+    <h2 id="manager-gui">GUI Overview (Recommended)</h2>
+    <p>The <strong>Overkill System Manager</strong> is the primary and recommended way to manage your Overkill Linux system. It is a full-featured PyQt6 graphical application with a modular interface -- left sidebar for navigation and a main content area with real-time console output for each operation.</p>
+    <div class="callout info">
+      <strong>How to launch:</strong> Open the <strong>Applications Menu</strong> on your KDE Plasma desktop and click <strong>Overkill System Manager</strong>. The application will request root privileges automatically. You do not need to open a terminal.
+    </div>
+    <p>The GUI is designed to be the single point of control for your entire system. All edition installations, package management, driver setup, DNS configuration, ZRAM management, browser installation, and log viewing can be done through the graphical interface without ever touching a terminal.</p>
+
+    <h2 id="manager-modules">Modules</h2>
+    <table class="docs-table">
+      <thead>
+        <tr><th>Module</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Editions</strong></td><td>Browse, install, and uninstall any of the 20 editions. Displays edition name, description, and install button for each. Includes an "Uninstall Current Edition" button at the top.</td></tr>
+        <tr><td><strong>System</strong></td><td>Run full system updates (<code>apt update && apt dist-upgrade</code>), clean APT caches and orphan packages, and change the system hostname.</td></tr>
+        <tr><td><strong>Packages</strong></td><td>Install or remove APT packages by name. Enter one or more package names and click Install or Remove.</td></tr>
+        <tr><td><strong>Installers</strong></td><td>Install local <code>.deb</code> files via file picker, install Flatpak apps by application ID, remove Flatpak apps, and list all installed Flatpak applications.</td></tr>
+        <tr><td><strong>Drivers</strong></td><td>One-click NVIDIA proprietary driver installation. Detects GPU, installs the appropriate driver package, and configures kernel modules.</td></tr>
+        <tr><td><strong>ZRAM</strong></td><td>Install <code>zram-tools</code>, enable/disable ZRAM compressed swap via systemd, and view current ZRAM device status and usage statistics.</td></tr>
+        <tr><td><strong>Network</strong></td><td>Switch DNS to Cloudflare (1.1.1.1), Google (8.8.8.8), Quad9 (9.9.9.9), or configure custom DNS servers. Settings persist across NetworkManager restarts.</td></tr>
+        <tr><td><strong>Browsers</strong></td><td>Install and remove 12 web browsers: Firefox ESR, Brave, Tor Browser, Mullvad Browser, FireDragon, Zen Browser, Floorp, Waterfox, Opera GX, Vivaldi, Chromium, and Falkon.</td></tr>
+        <tr><td><strong>Logs</strong></td><td>View system logs: system (journalctl), boot, kernel (dmesg), Xorg, APT history, and dpkg log. Configurable line count.</td></tr>
+        <tr><td><strong>System Info</strong></td><td>Display comprehensive hardware and software information including CPU, RAM, GPU, storage, kernel version, and distribution details.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="cli-reference">CLI Reference (Alternative)</h2>
+    <div class="callout warn">
+      <strong>Not recommended for regular use.</strong> The CLI backend exists as an alternative for advanced users, scripting, automation, and headless environments. For day-to-day system management, use the graphical <strong>Overkill System Manager</strong> from the Applications Menu instead.
+    </div>
+    <p>The CLI backend is located at <code>/usr/bin/overkill-setup-cli</code>. It must be run as root. Without arguments, it launches an interactive TUI menu. With a subcommand, it runs non-interactively.</p>
+    <pre><code>sudo overkill-setup-cli [subcommand] [arguments...]</code></pre>
+
+    <table class="docs-table">
+      <thead>
+        <tr><th>Subcommand</th><th>Arguments</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>status</code></td><td>--</td><td>Show currently installed edition</td></tr>
+        <tr><td><code>install-edition</code></td><td><code>&lt;id&gt;</code></td><td>Install edition by numeric ID (1-20)</td></tr>
+        <tr><td><code>uninstall-edition</code></td><td>--</td><td>Remove current edition and revert tuning</td></tr>
+        <tr><td><code>sys-update</code></td><td>--</td><td>Full system update (apt update + dist-upgrade)</td></tr>
+        <tr><td><code>sys-clean</code></td><td>--</td><td>Clean APT caches, remove orphan packages</td></tr>
+        <tr><td><code>pkg-install</code></td><td><code>&lt;pkgs...&gt;</code></td><td>Install APT packages</td></tr>
+        <tr><td><code>pkg-remove</code></td><td><code>&lt;pkgs...&gt;</code></td><td>Remove APT packages</td></tr>
+        <tr><td><code>set-dns</code></td><td><code>&lt;preset&gt; [primary] [secondary]</code></td><td>Set DNS (cloudflare, google, quad9, custom)</td></tr>
+        <tr><td><code>set-hostname</code></td><td><code>&lt;name&gt;</code></td><td>Change system hostname</td></tr>
+        <tr><td><code>install-browser</code></td><td><code>&lt;id&gt;</code></td><td>Install browser by ID (1-12)</td></tr>
+        <tr><td><code>install-deb</code></td><td><code>&lt;path&gt;</code></td><td>Install a local .deb file</td></tr>
+        <tr><td><code>install-flatpak</code></td><td><code>&lt;app-id&gt;</code></td><td>Install Flatpak by application ID</td></tr>
+        <tr><td><code>remove-flatpak</code></td><td><code>&lt;app-id&gt;</code></td><td>Remove a Flatpak application</td></tr>
+        <tr><td><code>list-flatpak</code></td><td>--</td><td>List installed Flatpak applications</td></tr>
+        <tr><td><code>install-nvidia</code></td><td>--</td><td>Install NVIDIA proprietary drivers</td></tr>
+        <tr><td><code>zram</code></td><td><code>install|enable|disable|status</code></td><td>Manage ZRAM compressed swap</td></tr>
+        <tr><td><code>view-log</code></td><td><code>&lt;type&gt; [lines]</code></td><td>View logs (system, boot, kernel, xorg, apt, dpkg)</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="cli-examples">CLI Examples</h2>
+    <pre><code># Install the Gaming Edition
+sudo overkill-setup-cli install-edition 5
+
+# Check which edition is installed
+sudo overkill-setup-cli status
+
+# Uninstall the current edition
+sudo overkill-setup-cli uninstall-edition
+
+# Switch DNS to Cloudflare
+sudo overkill-setup-cli set-dns cloudflare
+
+# Set custom DNS servers
+sudo overkill-setup-cli set-dns custom 1.1.1.1 9.9.9.9
+
+# Enable ZRAM compressed swap
+sudo overkill-setup-cli zram install
+sudo overkill-setup-cli zram enable
+
+# Install NVIDIA drivers
+sudo overkill-setup-cli install-nvidia
+
+# Install a Flatpak application
+sudo overkill-setup-cli install-flatpak com.valvesoftware.Steam
+
+# View last 50 lines of kernel log
+sudo overkill-setup-cli view-log kernel 50
+
+# Full system update
+sudo overkill-setup-cli sys-update</code></pre>
+
+    <!-- ─── CONFIGURATION ─── -->
+    <h2 id="dns">DNS Configuration</h2>
+    <p>Overkill Linux configures DNS persistently by combining two mechanisms:</p>
+    <ol>
+      <li>Writing nameserver entries to <code>/etc/resolv.conf</code></li>
+      <li>Creating a NetworkManager drop-in config at <code>/etc/NetworkManager/conf.d/90-dns-manual.conf</code> with <code>dns=none</code></li>
+    </ol>
+    <p>This prevents NetworkManager from overwriting your DNS settings when network connections change, reconnect, or when the system reboots.</p>
+
+    <h3>Available Presets</h3>
+    <table class="docs-table">
+      <thead>
+        <tr><th>Preset</th><th>Primary</th><th>Secondary</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Cloudflare</td><td>1.1.1.1</td><td>1.0.0.1</td><td>Fast, privacy-focused, no logging</td></tr>
+        <tr><td>Google</td><td>8.8.8.8</td><td>8.8.4.4</td><td>Reliable, global infrastructure</td></tr>
+        <tr><td>Quad9</td><td>9.9.9.9</td><td>149.112.112.112</td><td>Malware-blocking, security-focused</td></tr>
+        <tr><td>Custom</td><td>User-defined</td><td>User-defined (optional)</td><td>Any DNS server</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Reverting DNS</h3>
+    <p>To restore NetworkManager-managed DNS, remove the drop-in and restart:</p>
+    <pre><code>sudo rm /etc/NetworkManager/conf.d/90-dns-manual.conf
+sudo systemctl restart NetworkManager</code></pre>
+
+    <h2 id="zram">ZRAM Setup</h2>
+    <p>ZRAM creates a compressed block device in RAM that functions as swap space. This is faster than disk-based swap and particularly beneficial on systems with limited RAM.</p>
+    <pre><code># Install the zram-tools package
+sudo overkill-setup-cli zram install
+
+# Enable ZRAM swap (starts the systemd service)
+sudo overkill-setup-cli zram enable
+
+# Check current ZRAM status and usage
+sudo overkill-setup-cli zram status
+
+# Disable ZRAM swap
+sudo overkill-setup-cli zram disable</code></pre>
+    <div class="callout info">
+      <strong>Performance:</strong> ZRAM uses CPU cycles to compress/decompress data in memory. On modern CPUs, this is significantly faster than swapping to disk, especially on HDDs. Recommended for systems with 4 GB RAM or less.
+    </div>
+
+    <h2 id="nvidia">NVIDIA Drivers</h2>
+    <p>The System Manager provides one-click NVIDIA proprietary driver installation:</p>
+    <pre><code>sudo overkill-setup-cli install-nvidia</code></pre>
+    <p>This will:</p>
+    <ul>
+      <li>Detect your NVIDIA GPU model</li>
+      <li>Install the appropriate <code>nvidia-driver</code> package from Debian non-free repositories</li>
+      <li>Configure kernel modules for the NVIDIA driver</li>
+      <li>A reboot is required after installation</li>
+    </ul>
+
+    <h2 id="browsers">Browser Management</h2>
+    <p>Overkill ships with 12 browser options, installable and removable through System Manager:</p>
+    <table class="docs-table">
+      <thead>
+        <tr><th>ID</th><th>Browser</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Firefox ESR</td><td>APT</td></tr>
+        <tr><td>2</td><td>Brave</td><td>Flatpak</td></tr>
+        <tr><td>3</td><td>Tor Browser</td><td>Flatpak</td></tr>
+        <tr><td>4</td><td>Mullvad Browser</td><td>Flatpak</td></tr>
+        <tr><td>5</td><td>FireDragon</td><td>Flatpak</td></tr>
+        <tr><td>6</td><td>Zen Browser</td><td>Flatpak</td></tr>
+        <tr><td>7</td><td>Floorp</td><td>Flatpak</td></tr>
+        <tr><td>8</td><td>Waterfox</td><td>Flatpak</td></tr>
+        <tr><td>9</td><td>Opera GX</td><td>Flatpak</td></tr>
+        <tr><td>10</td><td>Vivaldi</td><td>Flatpak</td></tr>
+        <tr><td>11</td><td>Chromium</td><td>APT</td></tr>
+        <tr><td>12</td><td>Falkon</td><td>APT</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="conky-manager">Conky Manager</h2>
+    <p>Overkill Linux ships with a Conky desktop monitor that displays real-time system information (OS, edition, kernel, uptime, CPU, RAM, storage, network, battery). The <strong>Conky Manager</strong> is a terminal tool for enabling or disabling the Conky autostart.</p>
+    <p>To launch Conky Manager, open a terminal and run:</p>
+    <pre><code>conky-manager</code></pre>
+    <p>The tool presents an interactive menu:</p>
+    <pre><code>==================================
+  Overkill Conky Manager
+==================================
+
+Overkill Conky: Enabled
+Conky Reanchor: Enabled
+
+==================================
+1) Enable Conky (with Reanchor)
+2) Disable Conky (with Reanchor)
+3) Exit
+==================================</code></pre>
+    <ul>
+      <li><strong>Option 1</strong> -- Enables both the Conky widget and the Reanchor service (which repositions Conky on resolution changes). Both will start automatically on next boot.</li>
+      <li><strong>Option 2</strong> -- Disables both. Neither will start on next boot.</li>
+      <li><strong>Option 3</strong> -- Exit the tool.</li>
+    </ul>
+    <div class="callout info">
+      <strong>Note:</strong> This tool does not require root privileges. It modifies KDE autostart desktop files in <code>/etc/xdg/autostart/</code>. Changes take effect on the next login session.
+    </div>
+
+    <!-- ─── SECURITY ─── -->
+    <h2 id="hardening">Hardening Overview</h2>
+    <p>The Hardened Edition (ID 6) and Hardened Mix editions apply a comprehensive security stack consisting of four layers:</p>
+    <ol>
+      <li><strong>Sysctl Parameters</strong> -- Kernel-level security settings applied via <code>/etc/sysctl.d/</code></li>
+      <li><strong>GRUB Boot Parameters</strong> -- Security-focused kernel command-line parameters</li>
+      <li><strong>Module Blacklisting</strong> -- Blocking vulnerable or unnecessary kernel modules via <code>/etc/modprobe.d/</code></li>
+      <li><strong>nftables Firewall</strong> -- Network-level filtering (Hardened Edition only, not applied to "Hardened No FW" profiles)</li>
+    </ol>
+    <p>Additionally, the Hardened Edition installs the following security applications:</p>
+    <ul>
+      <li><strong>KeePassXC</strong> -- Offline password manager with TOTP support</li>
+      <li><strong>Kleopatra</strong> -- GPG key management and certificate manager</li>
+      <li><strong>Cryptomator</strong> -- Transparent client-side encryption for cloud storage (Flatpak)</li>
+      <li><strong>Warp</strong> -- Encrypted file transfer (Flatpak)</li>
+    </ul>
+
+    <h2 id="nftables">nftables Firewall</h2>
+    <p>The nftables firewall is applied only by the Hardened Edition (ID 6). It replaces any existing iptables rules and configures a stateful packet filter.</p>
+    <h3>Key Rules</h3>
+    <ul>
+      <li><strong>INPUT chain:</strong> Default policy DROP. Only established/related connections and explicitly allowed ports are accepted.</li>
+      <li><strong>OUTPUT chain:</strong> Default policy ACCEPT. All outbound traffic is unrestricted.</li>
+      <li><strong>FORWARD chain:</strong> Default policy DROP.</li>
+      <li><strong>Bogon filtering:</strong> Drops packets from known non-routable source IPs.</li>
+      <li><strong>SYN flood protection:</strong> Rate-limited SYN packet acceptance.</li>
+      <li><strong>ICMP rate limiting:</strong> Prevents ping floods while allowing normal ICMP.</li>
+    </ul>
+    <h3>Allowed Inbound Ports</h3>
+    <table class="docs-table">
+      <thead>
+        <tr><th>Protocol</th><th>Ports</th><th>Service</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>TCP</td><td>9001, 9030</td><td>Tor relay / directory</td></tr>
+        <tr><td>TCP</td><td>9050, 9150</td><td>Tor SOCKS proxy</td></tr>
+        <tr><td>TCP</td><td>4444, 4447</td><td>I2P HTTP / SOCKS proxy</td></tr>
+        <tr><td>TCP/UDP</td><td>7656, 7657, 7658</td><td>I2P SAM / console / transit</td></tr>
+        <tr><td>UDP</td><td>1194</td><td>OpenVPN</td></tr>
+        <tr><td>UDP</td><td>51820</td><td>WireGuard</td></tr>
+        <tr><td>UDP</td><td>5353</td><td>mDNS (local network discovery)</td></tr>
+        <tr><td>UDP</td><td>67, 68</td><td>DHCP client/server</td></tr>
+      </tbody>
+    </table>
+    <div class="callout info">
+      <strong>Privacy Networks:</strong> Tor, I2P, OpenVPN, and WireGuard ports are explicitly allowed so that privacy tools function correctly behind the firewall.
+    </div>
+
+    <h2 id="sysctl">Sysctl Tuning</h2>
+    <p>Hardened editions apply the following sysctl parameters (non-exhaustive):</p>
+    <ul>
+      <li><code>net.ipv4.tcp_syncookies = 1</code> -- SYN flood protection</li>
+      <li><code>net.ipv4.conf.all.accept_redirects = 0</code> -- Block ICMP redirects</li>
+      <li><code>net.ipv4.conf.all.rp_filter = 1</code> -- Reverse-path filtering (anti-spoofing)</li>
+      <li><code>net.ipv4.conf.all.log_martians = 1</code> -- Log suspicious packets</li>
+      <li><code>kernel.core_pattern = /dev/null</code> -- Disable core dumps</li>
+      <li><code>kernel.kptr_restrict = 2</code> -- Hide kernel pointers</li>
+      <li><code>kernel.yama.ptrace_scope = 2</code> -- Restrict ptrace</li>
+    </ul>
+
+    <h2 id="module-blacklist">Module Blacklisting</h2>
+    <p>Hardened editions block the following kernel module categories via <code>/etc/modprobe.d/</code>:</p>
+    <ul>
+      <li><strong>USB Storage</strong> -- <code>usb-storage</code>, <code>uas</code> (prevents unauthorized USB data exfiltration)</li>
+      <li><strong>FireWire</strong> -- <code>firewire-core</code>, <code>firewire-ohci</code>, <code>firewire-sbp2</code> (DMA attack vector)</li>
+      <li><strong>Bluetooth</strong> -- <code>bluetooth</code>, <code>btusb</code> (wireless attack surface reduction)</li>
+      <li><strong>Legacy Network</strong> -- <code>dccp</code>, <code>sctp</code>, <code>rds</code>, <code>tipc</code> (rarely-used protocols with known vulnerabilities)</li>
+      <li><strong>Miscellaneous</strong> -- <code>thunderbolt</code>, <code>cramfs</code>, <code>freevxfs</code>, <code>jffs2</code>, <code>hfs</code>, <code>hfsplus</code>, <code>udf</code></li>
+    </ul>
+
+    <!-- ─── REFERENCE ─── -->
+    <h2 id="file-locations">File Locations</h2>
+    <table class="docs-table">
+      <thead>
+        <tr><th>File</th><th>Purpose</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>/usr/bin/overkill-setup</code></td><td>System Manager GUI (PyQt6)</td></tr>
+        <tr><td><code>/usr/bin/overkill-setup-cli</code></td><td>System Manager CLI backend (Bash)</td></tr>
+        <tr><td><code>/usr/share/edition/edition.conf</code></td><td>Currently installed edition state</td></tr>
+        <tr><td><code>/usr/share/conky/overkill_conky.conf</code></td><td>Conky desktop monitor configuration</td></tr>
+        <tr><td><code>/etc/nftables.conf</code></td><td>nftables firewall rules (Hardened Edition)</td></tr>
+        <tr><td><code>/etc/nftables.conf.bak</code></td><td>Backup of original nftables config</td></tr>
+        <tr><td><code>/etc/sysctl.d/99-overkill-*.conf</code></td><td>Tuning profile sysctl parameters</td></tr>
+        <tr><td><code>/etc/modprobe.d/overkill-*.conf</code></td><td>Hardened module blacklist</td></tr>
+        <tr><td><code>/etc/NetworkManager/conf.d/90-dns-manual.conf</code></td><td>DNS persistence (prevents NM override)</td></tr>
+        <tr><td><code>/usr/bin/conky-manager</code></td><td>Conky Manager (enable/disable Conky autostart)</td></tr>
+        <tr><td><code>/usr/bin/conky-reanchor</code></td><td>Conky reanchor script (repositions Conky on resolution change)</td></tr>
+        <tr><td><code>/usr/share/icons/over2.png</code></td><td>Application icon</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="troubleshooting">Troubleshooting</h2>
+
+    <h3>Edition install fails</h3>
+    <p>Ensure you have an active internet connection and that APT repositories are reachable. Run <code>sudo apt update</code> manually to check. If a previous edition is installed, uninstall it first.</p>
+
+    <h3>nftables service fails to start</h3>
+    <p>Check the ruleset syntax: <code>sudo nft -c -f /etc/nftables.conf</code>. If the rules are corrupt, restore the backup: <code>sudo cp /etc/nftables.conf.bak /etc/nftables.conf && sudo systemctl restart nftables</code>.</p>
+
+    <h3>DNS resets after reboot</h3>
+    <p>Verify that the NetworkManager drop-in exists: <code>cat /etc/NetworkManager/conf.d/90-dns-manual.conf</code>. It should contain <code>[main]</code> and <code>dns=none</code>. If missing, re-apply DNS through System Manager.</p>
+
+    <h3>NVIDIA driver not loading</h3>
+    <p>Reboot after installation. Check if the module loaded: <code>lsmod | grep nvidia</code>. If not, run <code>sudo dpkg-reconfigure nvidia-driver</code> and reboot again. Ensure Secure Boot is disabled.</p>
+
+    <h3>Conky shows "None" for edition</h3>
+    <p>This is normal if no edition has been installed yet. Install an edition through System Manager and the Conky display will update automatically.</p>
+
+    <h3>Flatpak apps not appearing in menu</h3>
+    <p>Log out and back in, or run: <code>flatpak --user update</code>. Some desktop environments cache the application menu and require a session restart.</p>
+
+    <h3>ZRAM not activating</h3>
+    <p>Ensure <code>zram-tools</code> is installed: <code>sudo overkill-setup-cli zram install</code>. Then enable: <code>sudo overkill-setup-cli zram enable</code>. Check status with <code>sudo overkill-setup-cli zram status</code>.</p>
+
+  </main>
+</div>
+
+<!-- Mobile sidebar toggle -->
+<div class="docs-menu-toggle" id="docsMenuToggle">&equiv;</div>
+
+<script src="script.js"></script>
+</body>
+</html>

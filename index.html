@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overkill Linux</title>
+  <meta name="description" content="A Debian-based Linux distribution with KDE Plasma. 20 specialized editions, a powerful System Manager, and effortless workstation setup.">
+  <link rel="icon" href="Assets/logo.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.revealed { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="#" class="nav-brand">
+      <img src="Assets/logo.png" alt="Overkill">
+      <span>OVERKILL</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#editions">Editions</a></li>
+      <li><a href="#manager">System Manager</a></li>
+      <li><a href="#releases">Releases</a></li>
+      <li><a href="docs.html">Docs</a></li>
+      <li><a href="#download">Download</a></li>
+    </ul>
+    <div class="nav-toggle" id="navToggle">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="Assets/background.png" alt="Overkill Linux">
+  </div>
+  <div class="container hero-content">
+    <div class="hero-tag">
+      <span class="pulse"></span>
+      v2.0 Katana  //  Now Available
+    </div>
+    <h1>Built to be<br><span class="gradient">Overkill.</span></h1>
+    <p class="hero-desc">A Debian-based Linux distribution with KDE Plasma desktop. Customized editions for every user type, one-click package and kernel configuration through the Overkill System Manager.</p>
+    <div class="hero-actions">
+      <a href="#download" class="btn btn-glow">Download ISO</a>
+      <a href="#editions" class="btn btn-ghost">Explore Editions</a>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ═══ ABOUT ═══ -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-layout">
+      <div class="about-hero reveal">
+        <div class="about-text">
+          <div class="section-label">About</div>
+          <h2 class="section-title">What is Overkill Linux?</h2>
+          <p>Overkill Linux is a Debian-based Linux distribution that uses the KDE Plasma desktop environment. It offers customized editions tailored to every user type and need -- developers, gamers, multimedia creators, scientists, crypto users, engineers, and students.</p>
+          <p>Through the <strong>Overkill System Manager</strong>, all required packages for each edition are downloaded and kernel settings are applied with a single click. The System Manager also provides ZRAM support, NVIDIA driver installation, package management, DNS configuration, browser installation, and general system administration tools.</p>
+          <p>The goal of Overkill is to provide an effortless and fast workstation setup for every user. One ISO, install your preferred edition after boot, and your system is ready.</p>
+        </div>
+        <div class="screenshot-frame">
+          <div class="frame-bar">
+            <span class="frame-dot"></span>
+            <span class="frame-dot"></span>
+            <span class="frame-dot"></span>
+          </div>
+          <a href="Assets/desktop.jpeg" target="_blank"><img src="Assets/desktop.jpeg" alt="Overkill Linux Desktop with Conky System Monitor"></a>
+        </div>
+      </div>
+
+      <div class="features-grid reveal">
+        <div class="feature-card">
+          <div class="feat-icon">//</div>
+          <h4>20 Editions</h4>
+          <p>Customized editions for development, gaming, multimedia, AI, science, office, crypto, and mix combinations. Each installs the right packages and kernel settings.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon">>_</div>
+          <h4>System Manager</h4>
+          <p>PyQt6 graphical application for edition management, package installation, NVIDIA drivers, ZRAM, DNS settings, browser setup, and system maintenance.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon">#!</div>
+          <h4>Kernel Tuning</h4>
+          <p>Per-edition kernel tuning profiles: gaming performance optimization, multimedia low-latency, AI memory management, and security hardening.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon">&&</div>
+          <h4>Mix Editions</h4>
+          <p>Combine multiple workflows into one edition. Dev+Gaming, Dev+AI, Dev+Crypto, and Lite variants for lightweight setups.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ═══ EDITIONS ═══ -->
+<section class="section" id="editions">
+  <div class="container">
+    <div class="section-label reveal">Editions</div>
+    <h2 class="section-title reveal">20 Purpose-Built Editions</h2>
+    <p class="section-sub reveal">Each edition installs a curated set of APT packages and Flatpak applications with optional kernel tuning profiles. Only one edition can be active at a time -- switch freely by uninstalling and reinstalling.</p>
+
+    <div class="editions-grid">
+
+      <div class="edition-card reveal">
+        <span class="eid">01</span>
+        <h3>Development Edition</h3>
+        <p>Docker, Cargo, Rust, Go, Python, Node.js, PHP, Ruby, Arduino, CMake, and a full suite of JetBrains IDEs, VS Code, Zed, Godot, and GitHub Desktop via Flatpak.</p>
+      </div>
+
+      <div class="edition-card reveal">
+        <span class="eid">02</span>
+        <h3>AI Edition</h3>
+        <p>LM Studio, Alpaca, Jan, CherryStudio, Newelle, Imaginer, and more. PyTorch, XGBoost, scikit-learn, Pandas, and NumPy included.</p>
+        <span class="tuning-badge ai">AI Tuning</span>
+      </div>
+
+      <div class="edition-card reveal">
+        <span class="eid">03</span>
+        <h3>Education Edition</h3>
+        <p>LibreOffice, GeoGebra, Stellarium, Marble, KTurtle, TuxType, TuxMath, KTouch, Parley, and educational tools for all ages.</p>
+      </div>
+
+      <div class="edition-card reveal">
+        <span class="eid">04</span>
+        <h3>Engineer Edition</h3>
+        <p>FreeCAD, Blender, LibreCAD, OpenSCAD, KiCad, Fritzing, Octave, Scilab -- CAD, CAM, EDA, simulation and 3D modeling tools.</p>
+      </div>
+
+      <div class="edition-card reveal">
+        <span class="eid">05</span>
+        <h3>Gaming Edition</h3>
+        <p>Wine, Steam, Lutris, MangoHud, RetroArch, Heroic, Bottles, ProtonPlus, Vulkan drivers, joystick support, and Discord.</p>
+        <span class="tuning-badge gaming">Gaming Tuning</span>
+      </div>
+
+      <div class="edition-card reveal">
+        <span class="eid">06</span>
+        <h3>Hardened Edition</h3>
+        <p>KeePassXC, Kleopatra, Cryptomator, Warp. Full sysctl hardening, GRUB lockdown, module blacklisting, and nftables firewall with Tor/VPN/I2P passthrough.</p>
+        <span class="tuning-badge hardened">Hardened + Firewall</span>
+      </div>
+
+      <div class="edition-card reveal">
+        <span class="eid">07</span>
+        <h3>Cryptocurrency Edition</h3>
+        <p>Electrum, Exodus, Monero, Trezor Suite, OneKey, Picocrypt, Cryptomator, Bitcoin Core, Blockstream Green, and 10+ crypto wallets.</p>
+      </div>
+
+      <div class="edition-card reveal">
+        <span class="eid">08</span>
+        <h3>Cryptocurrency Hardened</h3>
+        <p>All crypto wallets with full kernel hardening profile (sysctl, GRUB, module blacklist) -- without the firewall for P2P node connectivity.</p>
+        <span class="tuning-badge hardened">Hardened (No FW)</span>
+      </div>
+
+      <div class="edition-card reveal">
+        <span class="eid">09</span>
+        <h3>Scientific Edition</h3>
+        <p>LaTeX, Octave, R, GNU Plot, Maxima, SciLab, Avogadro, ParaView, Jupyter, and a full scientific Python stack with NumPy, SciPy, Matplotlib.</p>
+      </div>
+
+      <div class="edition-card reveal">
+        <span class="eid">10</span>
+        <h3>Office Edition</h3>
+        <p>LibreOffice, Thunderbird, Evolution, Planner, GnuCash, HomeBank, Simple Scan, and PDF management for business productivity.</p>
+      </div>
+
+      <div class="edition-card reveal">
+        <span class="eid">11</span>
+        <h3>Multimedia Edition</h3>
+        <p>Kdenlive, OBS Studio, Shotcut, Handbrake, Audacity, Ardour, LMMS, GIMP, Inkscape, Krita, Darktable, Scribus, and more.</p>
+        <span class="tuning-badge multimedia">Multimedia Tuning</span>
+      </div>
+
+      <div class="edition-card reveal">
+        <span class="eid">12</span>
+        <h3>Development + Gaming Mix</h3>
+        <p>Complete development IDE stack combined with the full gaming toolkit. Build software and play games on the same machine.</p>
+        <span class="tuning-badge gaming">Gaming Tuning</span>
+      </div>
+
+      <div class="edition-card reveal">
+        <span class="eid">13</span>
+        <h3>Dev + Gaming + Multimedia Mix</h3>
+        <p>The ultimate power-user edition -- development tools, gaming stack, and multimedia production all combined into one.</p>
+        <span class="tuning-badge gaming">Gaming Tuning</span>
+      </div>
+
+      <div class="edition-card reveal">
+        <span class="eid">14</span>
+        <h3>Development + AI Mix</h3>
+        <p>Full dev IDE stack combined with all AI/ML applications and libraries. PyTorch, XGBoost, and desktop AI clients included.</p>
+        <span class="tuning-badge ai">AI Tuning</span>
+      </div>
+
+      <div class="edition-card reveal">
+        <span class="eid">15</span>
+        <h3>Dev + Cryptocurrency Mix</h3>
+        <p>Development tools and IDEs combined with all cryptocurrency wallets, Cryptomator, and Picocrypt encryption apps.</p>
+      </div>
+
+      <div class="edition-card reveal">
+        <span class="eid">16</span>
+        <h3>Dev + Crypto Hardened Mix</h3>
+        <p>Full dev stack plus crypto wallets with hardened kernel settings and module blacklisting. Ideal for blockchain developers.</p>
+        <span class="tuning-badge hardened">Hardened (No FW)</span>
+      </div>
+
+      <div class="edition-card reveal">
+        <span class="eid">17</span>
+        <h3>Gaming Lite Edition</h3>
+        <p>Steam, Heroic Games Launcher, Lutris, and Discord -- a lightweight, focused gaming setup with full kernel tuning applied.</p>
+        <span class="tuning-badge gaming">Gaming Tuning</span>
+      </div>
+
+      <div class="edition-card reveal">
+        <span class="eid">18</span>
+        <h3>Development Lite Edition</h3>
+        <p>VS Code and GitHub Desktop via Flatpak -- a minimal, lightweight developer environment with no heavy dependencies.</p>
+      </div>
+
+      <div class="edition-card reveal">
+        <span class="eid">19</span>
+        <h3>Dev + Gaming Lite Mix</h3>
+        <p>Combines Dev Lite and Gaming Lite -- VS Code, GitHub Desktop, Steam, Heroic, Lutris, and Discord with gaming tuning.</p>
+        <span class="tuning-badge gaming">Gaming Tuning</span>
+      </div>
+
+      <div class="edition-card reveal">
+        <span class="eid">20</span>
+        <h3>Gamebox Edition</h3>
+        <p>Mindustry, OpenTTD, 0 A.D., Simutrans, and Aqueducts -- open-source strategy and simulation games with gaming tuning.</p>
+        <span class="tuning-badge gaming">Gaming Tuning</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ═══ SYSTEM MANAGER ═══ -->
+<section class="section" id="manager">
+  <div class="container">
+    <div class="section-label reveal">System Manager</div>
+    <h2 class="section-title reveal">Complete Control, One Interface</h2>
+    <p class="section-sub reveal">The Overkill System Manager is a PyQt6 graphical application backed by a full-featured CLI. Every operation available in the GUI can be scripted from the terminal. Manage your entire system without ever touching a config file.</p>
+
+    <div class="reveal">
+      <div class="screenshot-frame" style="margin-bottom:56px">
+        <div class="frame-bar">
+          <span class="frame-dot"></span><span class="frame-dot"></span><span class="frame-dot"></span>
+        </div>
+        <a href="Assets/sysmanager.png" target="_blank"><img src="Assets/sysmanager.png" alt="System Manager -- System, ZRAM, Network, Installers"></a>
+      </div>
+    </div>
+
+    <h3 class="section-title reveal" style="font-size:1.4rem;margin-bottom:24px">Modules</h3>
+    <div class="manager-modules reveal" style="grid-template-columns:repeat(4,1fr)">
+      <div class="mod-card">
+        <div class="mod-icon">// EDITIONS</div>
+        <h4>Editions</h4>
+        <p>Browse, install, and uninstall any of 20 editions. One active at a time -- switch freely.</p>
+      </div>
+      <div class="mod-card">
+        <div class="mod-icon">// SYSTEM</div>
+        <h4>System</h4>
+        <p>Full system update, APT cache cleanup, hostname management, and system info.</p>
+      </div>
+      <div class="mod-card">
+        <div class="mod-icon">// PACKAGES</div>
+        <h4>Packages</h4>
+        <p>Install or remove APT packages and Flatpak apps by name with real-time console output.</p>
+      </div>
+      <div class="mod-card">
+        <div class="mod-icon">// DRIVERS</div>
+        <h4>NVIDIA</h4>
+        <p>One-click NVIDIA proprietary driver installation with kernel module configuration.</p>
+      </div>
+      <div class="mod-card">
+        <div class="mod-icon">// ZRAM</div>
+        <h4>ZRAM</h4>
+        <p>Install, enable, disable, and monitor ZRAM compressed swap for better performance.</p>
+      </div>
+      <div class="mod-card">
+        <div class="mod-icon">// NETWORK</div>
+        <h4>DNS</h4>
+        <p>Switch DNS to Cloudflare, Google, Quad9, or custom. Persists across NetworkManager restarts.</p>
+      </div>
+      <div class="mod-card">
+        <div class="mod-icon">// BROWSERS</div>
+        <h4>Browsers</h4>
+        <p>Install and remove 12 browsers: Firefox, Brave, Tor, Mullvad, Zen, Floorp, Waterfox, and more.</p>
+      </div>
+      <div class="mod-card">
+        <div class="mod-icon">// LOGS</div>
+        <h4>Logs</h4>
+        <p>View system, boot, kernel, Xorg, APT, and dpkg logs directly inside the GUI console.</p>
+      </div>
+    </div>
+
+    <div class="manager-gallery reveal">
+      <div class="gallery-item">
+        <a href="Assets/edition.png" target="_blank"><img src="Assets/edition.png" alt="Edition Installer"></a>
+        <div class="gallery-caption">// Editions -- Install & Uninstall</div>
+      </div>
+      <div class="gallery-item">
+        <a href="Assets/browser.png" target="_blank"><img src="Assets/browser.png" alt="Browser Installer"></a>
+        <div class="gallery-caption">// Browsers -- 12 Options</div>
+      </div>
+      <div class="gallery-item wide">
+        <a href="Assets/edition2.png" target="_blank"><img src="Assets/edition2.png" alt="Mix Editions and Lite Editions"></a>
+        <div class="gallery-caption">// Mix Editions, Lite Editions, and Gamebox</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ═══ RELEASES ═══ -->
+<section class="section" id="releases">
+  <div class="container">
+    <div class="section-label reveal">Releases</div>
+    <h2 class="section-title reveal">Release History</h2>
+    <p class="section-sub reveal">Overkill Linux was formerly known as Linux Megamix. The project evolved to address maintenance overhead, installer limitations, and to introduce a more flexible edition system.</p>
+
+    <div class="editions-grid" style="grid-template-columns:1fr">
+      <div class="edition-card reveal">
+        <span class="eid">CURRENT</span>
+        <h3>Overkill Linux 2.0 "Katana"</h3>
+        <p>The Linux Megamix project was evolved due to debian-installer and squashfs copy issues, low usability, and to reduce maintenance overhead. The new version introduces greater edition flexibility -- for example, Developer and Gaming editions can now be combined into Mix editions.</p>
+        <ul style="margin:12px 0 0 18px;font-size:0.83rem;color:var(--text-dim);line-height:1.8">
+          <li>Kernel tuning profiles updated and expanded (gaming, multimedia, AI, hardened)</li>
+          <li>Multiple new editions added (Lite variants, Gamebox, Mix combinations)</li>
+          <li>Overkill System Manager for easy system and package management via GUI</li>
+          <li>New KDE Plasma desktop configuration with updates and improvements</li>
+          <li>New Conky desktop monitor with system info, performance, storage, network, and battery display</li>
+          <li>Conky Manager tool for enabling/disabling the desktop monitor</li>
+        </ul>
+      </div>
+      <div class="edition-card reveal">
+        <span class="eid">LEGACY</span>
+        <h3>Linux Megamix 1.0</h3>
+        <p>Initial release with 12 specialized editions ecosystem. Base system synchronized across all customized flavors. Standard deployment with debian-installer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ═══ DOWNLOAD ═══ -->
+<section class="section" id="download">
+  <div class="container">
+    <div class="download-wrapper reveal">
+      <div class="section-label" style="justify-content:center">Download</div>
+      <h2 class="section-title" style="text-align:center">Get Overkill Linux</h2>
+      <p class="section-sub" style="margin:0 auto 44px;text-align:center;max-width:500px">One ISO. Install your edition after boot. Choose your workflow, click install, reboot.</p>
+
+      <div class="dl-card">
+        <div class="dl-version">Overkill Linux 2.0</div>
+        <div class="dl-codename">Codename: Katana</div>
+        <div class="dl-meta">
+          <span><strong>Arch:</strong> amd64</span>
+          <span><strong>Base:</strong> Debian Stable</span>
+          <span><strong>Desktop:</strong> KDE Plasma</span>
+          <span><strong>Init:</strong> systemd</span>
+        </div>
+        <div class="sha-block">
+          <span class="sha-label">SHA-256 Checksum</span>
+          349c1ee8d1fda9c94dc098420e75a0f587e5e5adb3876c2e9ce8a8162fc245dd
+        </div>
+        <a href="https://sourceforge.net/projects/overkill/files/release/overkill-2.0-amd64.iso/download" class="btn btn-glow dl-btn">Download from SourceForge</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2025 Overkill Linux Project &mdash; Built on <a href="https://www.debian.org" target="_blank">Debian</a> &mdash; Licensed under GPL</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
